@@ -17,8 +17,9 @@ public class GameService {
     private GameRepository gameRepository;
 
     //Respeita a arquitetura: esse service devolve um DTO
-    public List<Game> findAll() {
+    public List<GameMinDTO> findAll() {
         List<Game> result = gameRepository.findAll(); //gera uma consulta no banco que busca todos os games, e é convertida em uma lista de games que cai numa variável (result)
-        return result;
+        List<GameMinDTO> dto = result.stream().map(x -> new GameMinDTO(x)).toList();
+        return dto;
     }
 }
