@@ -11,7 +11,7 @@ import java.util.Objects;
 public class Belonging {
 
     @EmbeddedId
-    private BelongingPK id = new BelongingPK();
+    private BelongingPK id = new BelongingPK(); //new por que é um objeto, preciso instanciar ele
     private Integer position;
 
     public Belonging() {

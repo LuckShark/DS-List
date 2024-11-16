@@ -3,7 +3,7 @@ package com.luckshark.dslist.dto;
 
 import com.luckshark.dslist.entities.Game;
 
-public class GameMinDTO {
+public class GameMinDTO { //É uma versão do Game mas só com 5 dados
 
     private Long id;
     private String title;
