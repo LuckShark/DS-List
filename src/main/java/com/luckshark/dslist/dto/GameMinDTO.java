@@ -2,6 +2,7 @@ package com.luckshark.dslist.dto;
 
 
 import com.luckshark.dslist.entities.Game;
+import com.luckshark.dslist.projections.GameMinProjection;
 
 public class GameMinDTO { //É uma versão do Game mas só com 5 dados
 
@@ -21,6 +22,15 @@ public class GameMinDTO { //É uma versão do Game mas só com 5 dados
         year = entity.getYear();
         imgUrl = entity.getImgUrl();
         shortDescription = entity.getShortDescription();
+    }
+
+    //DTO para Projections
+    public GameMinDTO(GameMinProjection projection) {
+        id = projection.getId();
+        title = projection.getTitle();
+        year = projection.getYear();
+        imgUrl = projection.getImgUrl();
+        shortDescription = projection.getShortDescription();
     }
 
     //No DTO, só precia de GETTERs

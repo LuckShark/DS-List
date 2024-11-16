@@ -3,6 +3,7 @@ package com.luckshark.dslist.services;
 import com.luckshark.dslist.dto.GameDTO;
 import com.luckshark.dslist.dto.GameMinDTO;
 import com.luckshark.dslist.entities.Game;
+import com.luckshark.dslist.projections.GameMinProjection;
 import com.luckshark.dslist.repositories.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -32,5 +33,12 @@ public class GameService {
         List<Game> result = gameRepository.findAll(); //gera uma consulta no banco que busca todos os games, e é convertida em uma lista de games que cai numa variável (result)
         List<GameMinDTO> dto = result.stream().map(x -> new GameMinDTO(x)).toList();
         return dto;
+    }
+
+    //Após criar o Projections
+    @Transactional(readOnly = true)
+    public List<GameMinDTO> findByList(Long listId) {
+        List<GameMinProjection> result = gameRepository.searchByList(listId);
+        return result.stream().map(x -> new GameMinDTO(x)).toList();
     }
 }
